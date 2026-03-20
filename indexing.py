@@ -16,12 +16,7 @@ def load_corpus(folder: str) -> dict:
 
 
 def build_inverted_index(corpus: dict) -> dict:
-    """
-    Bangun Inverted Index dengan notasi materi dosen:
-    term -> [ {id: doc_id, fij: frekuensi, positions: [pos1, pos2, ...]} ]
-
-    Notasi: <idj, fij, [O1, O2, ..., Ok]>
-    """
+    
     # Struktur sementara: term -> {doc_id -> [posisi]}
     raw = defaultdict(lambda: defaultdict(list))
 

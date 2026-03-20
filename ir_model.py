@@ -1,9 +1,3 @@
-"""
-IR Model — Boolean Retrieval sesuai materi dosen
-Operator precedence: () -> NOT -> AND -> OR
-Contoh: Fuzzy OR NOT (Genetik AND Learning)
-"""
-
 import re
 from preprocessing import preprocess
 
@@ -26,21 +20,12 @@ def tokenize_query(raw: str) -> list:
     -> ['Fuzzy', 'OR', 'NOT', '(', 'Genetik', 'AND', 'Learning', ')']
     """
     raw = raw.strip()
-    # Pisahkan kurung jadi token tersendiri
     raw = raw.replace('(', ' ( ').replace(')', ' ) ')
     tokens = raw.split()
     return tokens
 
-
-# ── Parser rekursif (sesuai operator precedence dosen) ───────
 class BooleanParser:
-    """
-    Operator precedence:
-    1. () — kurung dikerjakan pertama
-    2. NOT
-    3. AND
-    4. OR
-    """
+
     def __init__(self, tokens, doc_ids, inv_index, steps):
         self.tokens   = tokens
         self.pos      = 0
