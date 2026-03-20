@@ -1,6 +1,6 @@
 # 📚 Tugas STKI — Boolean Retrieval Model
 
-> **Mata Kuliah:** Sistem Temu Kembali Informasi (STKI)  
+> **Mata Kuliah:** Sistem Temu Kembali Informasi (D)  
 > **Nama:** I Kadek Bintang Adi Bimantara  
 > **NIM:** 2405551049  
 
