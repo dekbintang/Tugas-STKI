@@ -269,7 +269,6 @@ with tab4:
             </div>
             """, unsafe_allow_html=True)
 
-        # ── Langkah-langkah operasi (seperti slide dosen) ─────
         st.markdown("### Langkah Operasi")
         op_steps = [s for s in steps if " AND " in s or " OR " in s or s.startswith("NOT ")]
         for i, step in enumerate(op_steps):
