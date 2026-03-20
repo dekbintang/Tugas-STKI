@@ -1,0 +1,1 @@
+Algoritma genetika adalah metode optimasi yang terinspirasi dari proses seleksi alam dan evolusi biologis. Algoritma ini menggunakan operator seleksi, persilangan, dan mutasi untuk menghasilkan solusi yang lebih baik setiap generasi. Algoritma genetika efektif digunakan untuk menyelesaikan masalah optimasi yang kompleks dan ruang pencarian yang besar.

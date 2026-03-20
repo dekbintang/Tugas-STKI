@@ -1,0 +1,1 @@
+Pemrosesan bahasa alami adalah bidang kecerdasan buatan yang memungkinkan komputer memahami bahasa manusia. Tokenisasi memecah teks menjadi unit kata sedangkan stemming mengubah kata ke bentuk dasarnya. Analisis sentimen menggunakan pembelajaran mesin untuk mengklasifikasikan teks sebagai positif negatif atau netral.

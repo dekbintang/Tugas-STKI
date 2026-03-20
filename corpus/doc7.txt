@@ -1,0 +1,1 @@
+Robotika adalah bidang yang menggabungkan kecerdasan buatan dengan teknik mekanik dan elektronik. Robot otonom menggunakan sensor dan algoritma navigasi untuk bergerak tanpa intervensi manusia. Pembelajaran penguatan memungkinkan robot belajar dari interaksi langsung dengan lingkungan sekitarnya.

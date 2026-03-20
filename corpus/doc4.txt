@@ -1,0 +1,1 @@
+Sistem temu kembali informasi bertujuan menemukan dokumen relevan dari koleksi besar berdasarkan query pengguna. Inverted index adalah struktur data yang memetakan setiap kata ke daftar dokumen yang mengandungnya secara efisien. Model boolean menggunakan operator AND OR NOT untuk memproses query dan menghasilkan dokumen yang sesuai.

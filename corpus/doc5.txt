@@ -1,0 +1,1 @@
+Logika fuzzy adalah sistem logika yang memungkinkan nilai kebenaran berupa bilangan antara nol dan satu. Himpunan fuzzy memiliki fungsi keanggotaan yang menentukan derajat keanggotaan suatu elemen dalam himpunan. Extended boolean model menggabungkan konsep logika fuzzy untuk menghasilkan peringkat dokumen yang lebih relevan.

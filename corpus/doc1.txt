@@ -1,0 +1,1 @@
+Kecerdasan buatan adalah cabang ilmu komputer yang membuat mesin mampu belajar dan berpikir seperti manusia. Algoritma pembelajaran mesin memungkinkan komputer memproses data dan mengenali pola secara otomatis. Kecerdasan buatan diterapkan dalam pengenalan wajah, penerjemahan bahasa, dan kendaraan otonom.

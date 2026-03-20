@@ -1,0 +1,1 @@
+Jaringan saraf tiruan adalah model komputasi yang terinspirasi dari cara kerja neuron biologis di otak manusia. Setiap neuron menerima input, memprosesnya, dan meneruskan output ke lapisan berikutnya melalui bobot koneksi. Deep learning menggunakan jaringan berlapis untuk mempelajari fitur secara hierarkis dari data yang besar.
