@@ -14,7 +14,6 @@ Implementasi **Boolean Retrieval Model** dengan teknik **Incidence Matrix** dan 
 
 ## 📸 Tampilan Aplikasi
 
-**1. Tampilan Corpus Dokumen**
 ![Tampilan Corpus Dokumen](images/corpus.png)
 
 **2. Tampilan Incidence Matrix**
@@ -32,8 +31,6 @@ Implementasi **Boolean Retrieval Model** dengan teknik **Incidence Matrix** dan 
 ---
 
 ## 🗂️ Struktur Project
-
-```
 Tugas-STKI/
 ├── app.py               # Antarmuka utama (Streamlit)
 ├── preprocessing.py     # Tokenisasi & Stemming
