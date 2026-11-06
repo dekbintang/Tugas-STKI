@@ -1,119 +1,146 @@
-# 📚 Tugas STKI — Boolean Retrieval Model
+<div align="center">
 
-> **Mata Kuliah:** Sistem Temu Kembali Informasi (STKI)  
-> **Nama:** I Kadek Bintang Adi Bimantara  
-> **NIM:** 2405551049  
+# 🔍 Boolean IR Engine
+### *Indonesian Information Retrieval System with AST Query Parser & Sastrawi NLP*
 
----
+[![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![Streamlit](https://img.shields.io/badge/Streamlit-1.30+-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://streamlit.io/)
+[![NLP](https://img.shields.io/badge/NLP-PySastrawi-2BAF2B?style=for-the-badge)](https://github.com/harispraba/PySastrawi)
+[![Pandas](https://img.shields.io/badge/Pandas-Dataframe-150458?style=for-the-badge&logo=pandas&logoColor=white)](https://pandas.pydata.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
 
-## 📄 Deskripsi
+<p align="center">
+  Mesin pencari teks berbasis <b>Boolean Retrieval Model</b> yang dirancang khusus untuk korpus berbahasa Indonesia. Mengimplementasikan parser ekspresi boolean berbasis rekursif (mendukung tanda kurung bertingkat), konstruksi <i>Inverted Index</i> dan <i>Term-Document Incidence Matrix</i>, serta antarmuka web interaktif modern berbasis Streamlit.
+</p>
 
-Implementasi **Boolean Retrieval Model** dengan teknik **Incidence Matrix** dan **Inverted Index** menggunakan Python dan Streamlit. Program mendukung query boolean dengan operator AND, OR, NOT, serta kurung `()` dengan operator precedence sesuai materi kuliah.
-
----
-
-## 📸 Tampilan Aplikasi
-
-**1. Tampilan Corpus Dokumen**
-
-![Tampilan Corpus Dokumen](images/corpus.png)
-
-**2. Tampilan Incidence Matrix**
-
-![Tampilan Incidence Matrix](images/matrix.png)
-
-**3. Tampilan Inverted Index**
-
-![Tampilan Inverted Index](images/inverted_index.png)
-
-**4. Tampilan Input Query**
-
-![Tampilan Input Query](images/query.png)
-
-**5. Tampilan Hasil Pencarian Query**
-
-![Tampilan Hasil Pencarian Query](images/hasil_query.png)
+</div>
 
 ---
 
-## 🗂️ Struktur Project
+## 📌 Latar Belakang & Pendekatan Teknis
 
-```
-Tugas-STKI/
-├── app.py
-├── preprocessing.py
-├── indexing.py
-├── ir_model.py
-├── requirements.txt
-├── .gitignore
-├── images/
-└── corpus/
-    ├── doc1.txt
-    ├── doc2.txt
-    ├── doc3.txt
-    ├── doc4.txt
-    ├── doc5.txt
-    ├── doc6.txt
-    └── doc7.txt
+Dalam temu kembali informasi (*Information Retrieval*), model pencarian Boolean adalah fondasi penting yang memanfaatkan teori himpunan dan logika matematika (*Exact Match*).
+
+Proyek ini dibangun dari nol (*from scratch*) tanpa menggunakan library pencarian instan, guna mendemonstrasikan algoritma inti temu kembali informasi:
+1. **Pipeline NLP Bahasa Indonesia:** Tokenisasi, normalisasi tanda baca, dan *morphological stemming* menggunakan algoritma Sastrawi.
+2. **Indexing Ganda:**
+   * **Inverted Index:** Menyimpan daftar *postings list* dokumen yang memuat setiap lema/term kata.
+   * **Incidence Matrix:** Matriks biner dimensi tinggi $(V \times D)$ untuk operasi vektor logika bitwise.
+3. **AST Recursive Query Parser:** Mampu mengevaluasi ekspresi boolean kompleks bertingkat dengan operator logika `AND`, `OR`, `NOT`, serta pengelompokan menggunakan tanda kurung `( ... )`.
+4. **Visualisasi Alur Logika (Step-by-step Evaluation):** Menampilkan bagaimana vektor kebenaran biner dihitung pada setiap tahap evaluasi query.
+
+---
+
+## 🏗️ Alur Arsitektur Sistem
+
+```mermaid
+flowchart TD
+    A["Raw Document Corpus"] --> B["NLP Preprocessing (Tokenize + PySastrawi Stemming)"]
+    B --> C["Index Engine"]
+    C --> D1["Inverted Index (Postings List)"]
+    C --> D2["Term-Document Incidence Matrix"]
+    
+    E["User Boolean Query (e.g., 'Fuzzy OR NOT (Genetik AND Learning)')"] --> F["Query Tokenizer & AST Recursive Parser"]
+    F --> G["Bitwise Vector Logic Engine (vec_and, vec_or, vec_not)"]
+    D1 --> G
+    D2 --> G
+    G --> H["Matching Document Retrieval & Highlighted Ranking"]
+    H --> I["Streamlit Interactive UI"]
 ```
 
 ---
 
-## ⚙️ Pre-Processing
+## 🌟 Fitur Utama
 
-| Tahap | Keterangan |
-|---|---|
-| Tokenisasi | Memecah teks menjadi token/kata |
-| Stemming | Mengubah kata ke bentuk dasar menggunakan PySastrawi |
-| Stopwords | Tidak digunakan |
-
----
-
-## 🔍 Fitur
-
-- **Incidence Matrix** — Representasi biner (TFbiner) term x dokumen
-- **Inverted Index** — Notasi `<idj, fij, [posisi]>`
-- **Boolean Query** — Operator AND, OR, NOT
-- **Operator Precedence** — `()` → `NOT` → `AND` → `OR`
-- **Langkah Operasi** — Ditampilkan step-by-step seperti materi kuliah
+* **⚡ Boolean Logic Evaluator:** Mendukung ekspresi boolean arbitrer:
+  * `termA AND termB`
+  * `termA OR termB`
+  * `NOT termA`
+  * `termA AND (termB OR NOT termC)`
+* **📑 Dual View Index Explorer:** Menjelajahi representasi matriks insidensi maupun kamus indeks terbalik (*inverted index*) secara visual melalui tabel interaktif.
+* **🎨 Modern Streamlit Dark Dashboard:** Antarmuka responsif dengan tipografi *Plus Jakarta Sans* dan visualisasi hasil pencarian dokumen yang terstruktur.
+* **🔬 Transparansi Perhitungan:** Menampilkan vektor bitwise hasil dari tiap operasi sub-ekspresi agar pengguna memahami alasan mengapa suatu dokumen terpilih.
 
 ---
 
-## 🚀 Cara Menjalankan
+## 💻 Contoh Penggunaan Query
 
-**1. Install library**
+Sistem mendukung format query kapital untuk operator:
 
-```bash
-pip install streamlit pandas PySastrawi
-```
-
-**2. Jalankan aplikasi**
-
-```bash
-streamlit run app.py
-```
-
-**3. Buka browser**
-
-```
-http://localhost:8501
-```
+| Contoh Query | Logika Pencarian |
+| :--- | :--- |
+| `fuzzy AND clustering` | Dokumen harus memuat kedua kata tersebut. |
+| `genetik OR neural` | Dokumen memuat minimal salah satu dari kedua kata. |
+| `NOT optimasi` | Dokumen yang sama sekali tidak memuat kata optimasi. |
+| `fuzzy OR NOT (genetik AND learning)` | Kombinasi operator bersarang dengan tanda kurung. |
 
 ---
 
-## 🔎 Contoh Query
+## 🛠️ Tech Stack & Struktur Kode
 
+* **Bahasa:** Python 3.10+
+* **Web UI Framework:** [Streamlit](https://streamlit.io/)
+* **Indonesian NLP Stemmer:** [PySastrawi](https://github.com/harispraba/PySastrawi)
+* **Data Processing:** [Pandas](https://pandas.pydata.org/)
+
+### Struktur Repositori
 ```
-Fuzzy AND Learning
-Genetik AND Learning
-Fuzzy OR NOT (Genetik AND Learning)
-(Fuzzy OR Optimasi) AND NOT Genetik
+├── app.py                # Aplikasi antarmuka Streamlit utama
+├── indexing.py           # Logika pembuat Inverted Index & Incidence Matrix
+├── ir_model.py           # Parser AST Boolean Query & eksekutor logika bitwise
+├── preprocessing.py      # Normalisasi teks & pipeline stemming Sastrawi
+├── corpus/               # Kumpulan dokumen teks sumber
+├── docs/                 # Spesifikasi & dokumentasi teknis
+└── requirements.txt      # Daftar dependensi Python
 ```
 
 ---
 
-## 🛠️ Teknologi
+## ⚡ Panduan Menjalankan Secara Lokal
 
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
-![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=flat&logo=streamlit&logoColor=white)
-![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat&logo=pandas&logoColor=white)
+### Prasyarat
+Pastikan Python 3.10 atau versi yang lebih baru telah terpasang di sistem Anda.
+
+### Langkah-langkah
+
+1. **Clone Repositori:**
+   ```bash
+   git clone https://github.com/dekbintang/Tugas-STKI.git
+   cd Tugas-STKI
+   ```
+
+2. **Buat Virtual Environment (Disarankan):**
+   ```bash
+   # Windows
+   python -m venv venv
+   .\venv\Scripts\activate
+
+   # Linux / macOS
+   python3 -m venv venv
+   source venv/bin/activate
+   ```
+
+3. **Instal Dependensi:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Jalankan Aplikasi Web:**
+   ```bash
+   streamlit run app.py
+   ```
+   Aplikasi akan otomatis terbuka pada peramban web di alamat: `http://localhost:8501`
+
+---
+
+## 👨‍💻 Pengembang
+
+**I Kadek Bintang Adi Bimantara**  
+*Program Studi Teknologi Informasi — Universitas Udayana*  
+* [GitHub Profile](https://github.com/dekbintang)
+* [Instagram](https://instagram.com/ikadek_bintang)
+
+---
+
+## 📄 Lisensi
+Proyek ini dilisensikan di bawah [Lisensi MIT](LICENSE).
