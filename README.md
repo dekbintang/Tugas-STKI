@@ -133,14 +133,5 @@ Pastikan Python 3.10 atau versi yang lebih baru telah terpasang di sistem Anda.
 
 ---
 
-## 👨‍💻 Pengembang
-
-**I Kadek Bintang Adi Bimantara**  
-*Program Studi Teknologi Informasi — Universitas Udayana*  
-* [GitHub Profile](https://github.com/dekbintang)
-* [Instagram](https://instagram.com/ikadek_bintang)
-
----
-
 ## 📄 Lisensi
 Proyek ini dilisensikan di bawah [Lisensi MIT](LICENSE).
